@@ -1,0 +1,89 @@
+﻿@model JANVI_TEST.EDM.Employee
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+@using (Html.BeginForm("Register", "Main", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table class="table">
+        <tr>
+            <td>
+                Emp_Name
+            </td>
+            <td>
+                @Html.TextBoxFor(c => c.e_name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Emp_Address
+            </td>
+            <td>
+                @Html.TextBoxFor(c => c.e_add)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Emp_Mob
+            </td>
+            <td>
+                @Html.TextBoxFor(c => c.e_mob)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Emp_DOB
+            </td>
+            <td>
+                @Html.TextBoxFor(c => c.e_dob, new { @type = "date" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Emp_Gender
+            </td>
+            <td>
+                @Html.RadioButtonFor(c => c.e_gender, "Male")Male
+                @Html.RadioButtonFor(c => c.e_gender, "Female")Female
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Emp_Profile
+            </td>
+            <td>
+                <input type="file" name="file">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Emp_email
+            </td>
+            <td>
+                @Html.TextBoxFor(c => c.e_email)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Emp_Password
+            </td>
+            <td>
+                @Html.PasswordFor(c => c.e_password)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Emp_Country
+            </td>
+            <td>
+                @Html.DropDownListFor(c => c.country_id, ViewData["countrylist"] as List<SelectListItem>, "Select Country")
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Registration" /></td>
+        </tr>
+    </table>
+}
+

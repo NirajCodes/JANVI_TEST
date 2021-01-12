@@ -1,0 +1,72 @@
+﻿@model List<JANVI_TEST.EDM.Employee>
+@{
+    ViewBag.Title = "Display";
+}
+@using JANVI_TEST.EDM
+@{
+
+    var db = new JP1Entities();
+}
+<h2>Display</h2>
+
+@using (Html.BeginForm())
+{
+
+
+    <table class="table">
+        <tr>
+            <td>
+                Emp_Name
+            </td>
+            <td>
+                Emp_Address
+            </td>
+            <td>
+                Emp_Mob
+            </td>
+            <td>
+                Emp_DOB
+            </td>
+            <td>
+                Emp_Gender
+            </td>
+
+            <td>
+                Emp_Profile
+            </td>
+            <td>
+                Emp_email
+            </td>
+            <td>
+                Emp_Password
+            </td>
+            <td>
+                Emp_Country
+            </td>
+            <td>
+                Action
+            </td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.e_name</td>
+                <td>@item.e_add</td>
+                <td>@item.e_mob</td>
+                <td>@item.e_dob</td>
+                <td>@item.e_gender</td>
+
+                <td><img src="~/Profile/@item.e_profile" width="100" height="100"></td>
+                <td>@item.e_email</td>
+                <td>@item.e_password</td>
+
+                <td>@db.Countries.Find(item.country_id).country_name</td>
+                <td></td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.e_id })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.e_id })
+                </td>
+            </tr>
+        }
+    </table>
+}
